@@ -1,0 +1,113 @@
+<%- include('partials/headerlogged') %>
+
+<h2 class="px-5 pt-5 display-7 fw-bold lh-1 text-body-emphasis ">Calories Calculator</h2>
+<p class="lead px-5 pb-5">Find out your maintenance calories below!</p>
+
+
+<div class="container my-2">
+  <div class="row pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+      <div class="col-lg-7">
+          <form id="calorieForm" class="px-5">
+              <div class="row mb-3">
+                  <label for="age" class="col-sm-2 col-form-label">Age</label>
+                  <div class="col-sm-3">
+                      <input class="form-control" id="age" name="age" type="number" required>
+                  </div>
+              </div>
+              <div class="row mb-3">
+                  <label for="height" class="col-sm-2 col-form-label">Height (cm)</label>
+                  <div class="col-sm-3">
+                      <input class="form-control" id="height" name="height" type="number" required>
+                  </div>
+              </div>
+              <div class="row mb-3">
+                  <label for="weight" class="col-sm-2 col-form-label">Weight (kg)</label>
+                  <div class="col-sm-3">
+                      <input class="form-control" id="weight" name="weight" type="number" required>
+                  </div>
+              </div>
+              <fieldset class="row mb-3">
+                  <legend class="col-form-label col-sm-2 pt-0">Activity Level</legend>
+                  <div class="col-sm-10">
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" id="none" name="activity" value="none" checked>
+                          <label class="form-check-label" for="none">No activity</label>
+                      </div>
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" id="low" name="activity" value="low">
+                          <label class="form-check-label" for="low">Low activity</label>
+                      </div>
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" id="moderate" name="activity" value="moderate">
+                          <label class="form-check-label" for="moderate">Moderate activity</label>
+                      </div>
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" id="high" name="activity" value="high">
+                          <label class="form-check-label" for="high">High activity</label>
+                      </div>
+                  </div>
+              </fieldset>
+              <div class="row mb-3">
+                  <div class="col-sm-10 offset-sm-2">
+                      <button type="submit" class="btn btn-primary">Calculate</button>
+                  </div>
+              </div>
+          </form>
+          <div id="result" class="mt-3"></div>
+          <div id="deficit"></div>
+          <div id="surplus"></div>
+      </div>
+      <div class="col-lg-5 p-0 overflow-hidden shadow-lg">
+          <img class="rounded-lg-3 height:" src="images/nutrition.jpg" alt="Image" width="700">
+      </div>
+  </div>
+</div>
+
+
+<script>
+  document.getElementById('calorieForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const age = parseFloat(document.getElementById('age').value);
+      const height = parseFloat(document.getElementById('height').value);
+      const weight = parseFloat(document.getElementById('weight').value);
+      const activity = document.querySelector('input[name="activity"]:checked').value;
+
+      let bmr;
+      // Basic Metabolic Rate (BMR) calculation using Mifflin-St Jeor Equation
+      if (age && height && weight) {
+          // BMR calculation for men: 10*weight + 6.25*height - 5*age + 5
+          // BMR calculation for women: 10*weight + 6.25*height - 5*age - 161
+          bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+      }
+
+      // Activity multipliers
+      let multiplier;
+      switch (activity) {
+          case 'none':
+              multiplier = 1.2;
+              break;
+          case 'low':
+              multiplier = 1.375;
+              break;
+          case 'moderate':
+              multiplier = 1.55;
+              break;
+          case 'high':
+              multiplier = 1.725;
+              break;
+          default:
+              multiplier = 1.2;
+      }
+
+      const maintenanceCalories = bmr * multiplier;
+      document.getElementById('result').innerHTML = `<h3 class="px-5 display-7 fw-bold lh-1 text-body-emphasis ">Maintenance Calories: ${maintenanceCalories.toFixed(2)}</h3>`;
+      document.getElementById('deficit').innerHTML= `<p class="lead px-5">Eat ${(maintenanceCalories-500).toFixed(2)} in order to lose 0.5kg a week.</p>`
+      document.getElementById('surplus').innerHTML= `<p class="lead px-5">Eat ${(maintenanceCalories+500).toFixed(2)} in order to gain 0.5kg a week.</p>`
+      window.scrollBy(0,1000);
+  });
+
+
+</script>
+
+<%- include('partials/footer') %>

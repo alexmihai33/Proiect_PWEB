@@ -1,0 +1,195 @@
+<%- include('partials/headerlogged') %>
+
+<div class="container my-3">
+  <div class="row p-4 pb-0 pe-lg-0 pt-lg-0 align-items-center rounded-3 border shadow-lg">
+    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+      <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Welcome Back!</h1>
+      <h2 class="display-6 fw-bold lh-1 text-body-emphasis"><%= name %></h2>
+      <p class="lead">We're happy to see you here! Let's get to work and make every day count. Add your desired exercise selection down below and start seeing improvements.</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+        <!--<button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Primary</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>-->
+      </div>
+    </div>
+    <div class="col-lg-4 offset-lg-0 p-0  overflow-hidden shadow-lg">
+        <img class="rounded-lg-3  mb-lg-3" src="images/img4.jpg" alt="" width="720">
+    </div>
+  </div>
+</div>
+
+<h2 class="px-5 pt-5 display-7 fw-bold lh-1 text-body-emphasis ">Workout Split</h2>
+<p class="lead px-5 pb-5">Make a training template down below!</p>
+
+<form action="/main" method="POST">
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center px-5 py-0">
+
+    <input type="hidden" name="test" value="Test">
+      <div class="card mx-1 shadow-lg" style="width: 12rem; height: 20rem;">
+        <div class="card-body">
+          <input type="hidden" name="day1" value="Monday">
+          <h5 class="card-title" for="day">Monday</h5>
+          <p class="card-text">Exercises</p>
+        </div>
+        <ul id="exercise-list"class="list-group list-group-flush">
+          <% if (exercise_names1 && exercise_names1.length > 0) { %>
+            <% exercise_names1.forEach(function(exercise_name) { %>
+              <li class="list-group-item"><%= exercise_name %></li>
+            <% }); %>
+          <% } else { %>
+            <li class="list-group-item">No exercises added.</li>
+          <% } %>
+        </ul>
+        <div class="card-body d-flex flex-column">
+          <input id = "exercise" name="exercise1" placeholder="Exercise Name" class="mr-3 mb-lg-0.5 mt-auto" style="width: 10rem; align-self: center; text-align: center;">
+          <button type="submit" class="btn btn-primary mt-auto">Add</button>
+        </div>
+      </div>
+
+
+
+      <div class="card mx-1 shadow-lg" style="width: 12rem; height: 20rem;">
+        <div class="card-body">
+          <input type="hidden" name="day2" value="Tuesday">
+          <h5 class="card-title" for="day">Tuesday</h5>
+          <p class="card-text">Exercises</p>
+        </div>
+        <ul id="exercise-list"class="list-group list-group-flush">
+          <% if (exercise_names2 && exercise_names2.length > 0) { %>
+            <% exercise_names2.forEach(function(exercise_name) { %>
+              <li class="list-group-item"><%= exercise_name %></li>
+            <% }); %>
+          <% } else { %>
+            <li class="list-group-item">No exercises added.</li>
+          <% } %>
+        </ul>
+        <div class="card-body d-flex flex-column">
+          <input id = "exercise" name="exercise2" placeholder="Exercise Name" class="mr-3 mb-lg-0.5 mt-auto" style="width: 10rem; align-self: center; text-align: center;">
+          <button type="submit" class="btn btn-primary mt-auto">Add</button>
+        </div>
+      </div>
+
+      <div class="card mx-1 shadow-lg" style="width: 12rem; height: 20rem;">
+        <div class="card-body">
+          <input type="hidden" name="day3" value="Wednesday">
+          <h5 class="card-title" for="day">Wednesday</h5>
+          <p class="card-text">Exercises</p>
+        </div>
+        <ul id="exercise-list"class="list-group list-group-flush">
+          <% if (exercise_names3 && exercise_names3.length > 0) { %>
+            <% exercise_names3.forEach(function(exercise_name) { %>
+              <li class="list-group-item"><%= exercise_name %></li>
+            <% }); %>
+          <% } else { %>
+            <li class="list-group-item">No exercises added.</li>
+          <% } %>
+        </ul>
+        <div class="card-body d-flex flex-column">
+          <input id = "exercise" name="exercise3" placeholder="Exercise Name" class="mr-3 mb-lg-0.5 mt-auto" style="width: 10rem; align-self: center; text-align: center;">
+          <button type="submit" class="btn btn-primary mt-auto">Add</button>
+        </div>
+      </div>
+
+      <div class="card mx-1 shadow-lg" style="width: 12rem; height: 20rem;">
+        <div class="card-body">
+          <input type="hidden" name="day4" value="Thursday">
+          <h5 class="card-title" for="day">Thursday</h5>
+          <p class="card-text">Exercises</p>
+        </div>
+        <ul id="exercise-list"class="list-group list-group-flush">
+          <% if (exercise_names4 && exercise_names4.length > 0) { %>
+            <% exercise_names4.forEach(function(exercise_name) { %>
+              <li class="list-group-item"><%= exercise_name %></li>
+            <% }); %>
+          <% } else { %>
+            <li class="list-group-item">No exercises added.</li>
+          <% } %>
+        </ul>
+        <div class="card-body d-flex flex-column">
+          <input id = "exercise" name="exercise4" placeholder="Exercise Name" class="mr-3 mb-lg-0.5 mt-auto" style="width: 10rem; align-self: center; text-align: center;">
+          <button type="submit" class="btn btn-primary mt-auto">Add</button>
+        </div>
+      </div>
+
+      <div class="card mx-1 shadow-lg" style="width: 12rem; height: 20rem;">
+        <div class="card-body">
+          <input type="hidden" name="day5" value="Friday">
+          <h5 class="card-title" for="day">Friday</h5>
+          <p class="card-text">Exercises</p>
+        </div>
+        <ul id="exercise-list"class="list-group list-group-flush">
+          <% if (exercise_names5 && exercise_names5.length > 0) { %>
+            <% exercise_names5.forEach(function(exercise_name) { %>
+              <li class="list-group-item"><%= exercise_name %></li>
+            <% }); %>
+          <% } else { %>
+            <li class="list-group-item">No exercises added.</li>
+          <% } %>
+        </ul>
+        <div class="card-body d-flex flex-column">
+          <input id = "exercise" name="exercise5" placeholder="Exercise Name" class="mr-3 mb-lg-0.5 mt-auto" style="width: 10rem; align-self: center; text-align: center;">
+          <button type="submit" class="btn btn-primary mt-auto">Add</button>
+        </div>
+      </div>
+
+      <div class="card mx-1 shadow-lg" style="width: 12rem; height: 20rem;">
+        <div class="card-body">
+          <input type="hidden" name="day6" value="Saturday">
+          <h5 class="card-title" for="day">Saturday</h5>
+          <p class="card-text">Exercises</p>
+        </div>
+        <ul id="exercise-list"class="list-group list-group-flush">
+          <% if (exercise_names6 && exercise_names6.length > 0) { %>
+            <% exercise_names6.forEach(function(exercise_name) { %>
+              <li class="list-group-item"><%= exercise_name %></li>
+            <% }); %>
+          <% } else { %>
+            <li class="list-group-item">No exercises added.</li>
+          <% } %>
+        </ul>
+        <div class="card-body d-flex flex-column">
+          <input id = "exercise" name="exercise6" placeholder="Exercise Name" class="mr-3 mb-lg-0.5 mt-auto" style="width: 10rem; align-self: center; text-align: center;">
+          <button type="submit" class="btn btn-primary mt-auto">Add</button>
+        </div>
+      </div>
+
+      <div class="card mx-1 shadow-lg" style="width: 12rem; height: 20rem;">
+        <div class="card-body">
+          <input type="hidden" name="day7" value="Sunday">
+          <h5 class="card-title" for="day">Sunday</h5>
+          <p class="card-text">Exercises</p>
+        </div>
+        <ul id="exercise-list"class="list-group list-group-flush">
+          <% if (exercise_names7 && exercise_names7.length > 0) { %>
+            <% exercise_names7.forEach(function(exercise_name) { %>
+              <li class="list-group-item"><%= exercise_name %></li>
+            <% }); %>
+          <% } else { %>
+            <li class="list-group-item">No exercises added.</li>
+          <% } %>
+        </ul>
+        <div class="card-body d-flex flex-column">
+          <input id = "exercise" name="exercise7" placeholder="Exercise Name" class="mr-3 mb-lg-0.5 mt-auto" style="width: 10rem; align-self: center; text-align: center;">
+          <button type="submit" class="btn btn-primary mt-auto">Add</button>
+        </div>
+      </div>
+
+    </div>
+  </form>
+
+  <form action="/deleteTemplate" method="POST">
+    <button type="submit" class="btn btn-light mt-auto mb-4 px-8 mx-5 lead">Reset Template</button>
+  </form>
+
+
+  <p class="lead px-5 mt-5">If you want to start a workout, click on the button below!</p>
+  <form action="/workout" method="GET">
+      <button type="submit" class="btn btn-primary mt-auto mb-4 px-8 mx-5 lead">Workout Manager</button>
+  </form>
+
+  <p class="lead px-5 mt-5">If you want to start tracking food, click below!</p>
+  <form action="/nutrition" method="GET">
+      <button type="submit" class="btn btn-primary mt-auto mb-4 px-8 mx-5 lead">Nutrition</button>
+  </form>
+
+
+<%- include('partials/footer') %>

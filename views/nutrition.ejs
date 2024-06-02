@@ -1,0 +1,103 @@
+<%- include('partials/headerlogged') %>
+
+<div class="px-4 py-2 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="/images/logo.jpg" alt="" width="72" height="57">
+    <h1 class="display-5 fw-bold text-body-emphasis">Meal Manager</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Add meals down below and track your macronutrients, you can see all your meals below, in Today's Meals. In order to see progress your nutrition needs to be on point. You can calculate caloric needs with our Calories Calculator!</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      </div>
+    </div>
+    <h4 class="display-10 fw-bold text-body-emphasis px-5">If you don't know your caloric needs, click below.</h4>
+<form action="/caloriescalculator" method="GET">
+    <button type="submit" class="btn btn-primary mt-auto mb-4 px-8 mx-5 mr-5 lead">Calories Calculator</button>
+</form>
+</div>
+
+<form id="mealForm" action="/addMeal" method="POST" class="">
+    <div class="container my-2">
+        <div class="row pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+            <div class="col-lg-7">
+                <h3 class="display-7 fw-bold lh-1 text-body-emphasis">Add meal</h3>
+                <div class="row align-items-center g-lg-5 py-5 px-4">
+                    <div class="row mb-3">
+                        <label for="weight" class="col-sm-2 col-form-label">Food Name</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" id="food_name" name="food_name" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="weight" class="col-sm-2 col-form-label">Calories</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" id="calories" name="calories" type="number" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="height" class="col-sm-2 col-form-label">Protein:</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" id="protein" name="protein" type="number" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="height" class="col-sm-2 col-form-label">Fat:</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" id="fat" name="fat" type="number" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="height" class="col-sm-2 col-form-label">Carbohydrates:</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" id="carbs" name="carbs" type="number" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Add Meal</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-lg-5 p-0 overflow-hidden shadow-lg">
+                <img class="rounded-lg-3" src="images/meals.jpg" alt="Image" width="580">
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<form METHOD="GET" action="/nutrition">
+    <div class="container">
+        <h2 class="pt-3 display-7 fw-bold lh-1 text-body-emphasis">Today's Meals</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Food Name</th>
+              <th scope="col">Calories</th>
+              <th scope="col">Protein</th>
+              <th scope="col">Fat</th>
+              <th scope="col">Carbs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% meals.forEach(function(meals) { %>
+              <tr>
+                <td><%= meals.food_name %></td>
+                <td><%= meals.calories %></td>
+                <td><%= meals.protein %></td>
+                <td><%= meals.fat %></td>
+                <td><%= meals.carbs %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+</form>
+
+<form action="/deleteMeals" method="POST">
+    <button type="submit" class="btn btn-primary mt-auto mb-4 px-8 mx-5 mr-5 lead">New Day</button>
+</form>
+
+
+<%- include('partials/footer') %>

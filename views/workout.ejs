@@ -1,0 +1,94 @@
+<%- include('partials/headerlogged') %>
+
+<div class="px-4 py-2 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="/images/logo.jpg" alt="" width="72" height="57">
+    <h1 class="display-5 fw-bold text-body-emphasis">Workout Manager</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Add exercises to your current day workout down below. You can view them further down on the Workout History and properly track your progress! Get stronger each week.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      </div>
+    </div>
+  </div>
+
+<form id="workoutForm" action="/addWorkout" method="POST" class="">
+    <div class="container my-2">
+        <div class="row pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+            <div class="col-lg-7">
+                <h3 class="display-7 fw-bold lh-1 text-body-emphasis">Add exercises for the workout</h3>
+                <div class="row align-items-center g-lg-5 py-5 px-4">
+                    <div class="row my-3">
+                        <select name="daySelect" class="form-select" aria-label="Default select example"
+                            style="width:32rem">
+                            <option value="" <%=selectedDay===null ? 'selected' : '' %>>Select the current day</option>
+                            <option value="Monday" <%=selectedDay==="Monday" ? 'selected' : '' %>>Monday</option>
+                            <option value="Tuesday" <%=selectedDay==="Tuesday" ? 'selected' : '' %>>Tuesday</option>
+                            <option value="Wednesday" <%=selectedDay==="Wednesday" ? 'selected' : '' %>>Wednesday
+                            </option>
+                            <option value="Thursday" <%=selectedDay==="Thursday" ? 'selected' : '' %>>Thursday</option>
+                            <option value="Friday" <%=selectedDay==="Friday" ? 'selected' : '' %>>Friday</option>
+                            <option value="Saturday" <%=selectedDay==="Saturday" ? 'selected' : '' %>>Saturday</option>
+                            <option value="Sunday" <%=selectedDay==="Sunday" ? 'selected' : '' %>>Sunday</option>
+                        </select>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="weight" class="col-sm-2 col-form-label">Exercise Name</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" id="exercise_name" name="exercise_name" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="weight" class="col-sm-2 col-form-label">Weight (kg)</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" id="weight" name="weight" type="number" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="height" class="col-sm-2 col-form-label">Repetitions</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" id="reps" name="reps" type="number" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Add Exercise</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-lg-5 p-0 overflow-hidden shadow-lg">
+                <img class="rounded-lg-3" src="images/workouts_img.jpg" alt="Image" width="580">
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<form METHOD="GET" action="/workout">
+    <div class="container">
+        <h2 class="pt-3 display-7 fw-bold lh-1 text-body-emphasis">Workout History</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">Exercise Name</th>
+              <th scope="col">Weight (kg)</th>
+              <th scope="col">Repetitions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% workouts.forEach(function(workout) { %>
+              <tr>
+                <td><%= workout.exercise_day %></td>
+                <td><%= workout.exercise_name %></td>
+                <td><%= workout.weight %></td>
+                <td><%= workout.reps %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+</form>
+
+<%- include('partials/footer') %>

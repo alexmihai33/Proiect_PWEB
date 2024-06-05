@@ -1,3 +1,5 @@
+# How To Run It
+
 !!! In order to run this project locally follow theese steps:
 1. Download the project locally in your computer
 2. Create a database using the scripts from the queries.sql file (and configure pg.Client according to your database's user, password, etc...)
@@ -7,8 +9,11 @@
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Description
 
 WorkoutWonder is a node.js + express.js fitness application where a user can log exercises and keep track of their progress (how many repetitions and weight they lifted for each exercise on each day), log their meals and keep track of calories and macronutrients and calculate their caloric needs.
+
+## Languages / Technologies used
 
 Frontend programming languages used : html, css, javascript
           
@@ -37,7 +42,7 @@ Backend technologies used:
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-!!! Website walkthrough
+# Application Walkthrough
 
 The user is greeted on a page that permits only an overview of features and login/signup - or the view of the about page.
 

@@ -23,7 +23,7 @@ Frontend technologies used :
                                
 2. ejs (to make it easier to comunicate with the backend and make the html pages dynamic)
 
-Backend programming languases used - javascript
+Backend programming languases used - javascript, sql
          
 Backend technologies used: 
 

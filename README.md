@@ -8,7 +8,7 @@
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-WorkoutWonder is a fitness application where a user can log exercises and keep track of their progress (how many repetitions and weight they lifted for each exercise on each day), log their meals and keep track of calories and macronutrients and calculate their caloric needs.
+WorkoutWonder is a node.js + express.js fitness application where a user can log exercises and keep track of their progress (how many repetitions and weight they lifted for each exercise on each day), log their meals and keep track of calories and macronutrients and calculate their caloric needs.
 
 Frontend programming languages used : html, css, javascript
           

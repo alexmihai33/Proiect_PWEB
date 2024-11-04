@@ -4,7 +4,8 @@
 1. Download the project locally in your computer
 2. Create a database using the scripts from the queries.sql file (and configure pg.Client according to your database's user, password, etc...)
 3. Run npm init in your terminal
-4. Run the project with node / nodemon .\index.js
+4. In index.js, change the data from the PgClient with your own
+5. Run the project with node / nodemon .\index.js
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------

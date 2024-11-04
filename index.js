@@ -13,10 +13,10 @@ const saltRounds = 10;
 app.set('view engine', 'ejs');
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "Fitness",
-  password: "3andru33",
+  user: "your-user",
+  host: "your-host",
+  database: "your-database",
+  password: "your-password",
   port: 5432,
 });
 
